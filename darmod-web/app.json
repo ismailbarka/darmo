@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.ismailbarka.web"
+  },
+  "ios": {
+    "bundleIdentifier": "com.ismailbarka.web"
+  }
+}

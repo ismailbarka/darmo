@@ -1,0 +1,19 @@
+{
+  "app_title": "Aura Nettoyage",
+  "search_placeholder": "Rechercher...",
+  "filter_category": "Toutes les catégories",
+  "distance": "Distance",
+  "directions": "Itinéraire",
+  "call": "Appeler",
+  "whatsapp": "WhatsApp",
+  "no_providers_found": "Aucun prestataire trouvé dans cette catégorie.",
+  "language": "Langue",
+  "close": "Fermer",
+  "age_years": "ans",
+  "rating": "Note",
+  "providers": "prestataires",
+  "view_profile": "Voir le profil",
+  "fr": "FR",
+  "ar": "AR",
+  "logo_text": "Daro"
+}
