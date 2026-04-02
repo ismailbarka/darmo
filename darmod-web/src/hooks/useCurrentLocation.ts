@@ -2,11 +2,9 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-const USE_STATIC_LOCATION = true; // Toggle this to false to restore dynamic GPS location
-
-const STATIC_LOCATION = {
-  latitude: 33.60002,
-  longitude: -7.50413,
+const CASABLANCA = {
+  latitude: 33.583646,
+  longitude: -7.622907,
 };
 
 export interface Region {
@@ -15,17 +13,12 @@ export interface Region {
 }
 
 export default function useCurrentLocation() {
-  const [region, setRegion] = useState<Region>(STATIC_LOCATION);
+  const [region, setRegion] = useState<Region>(CASABLANCA);
 
   const updateLocation = useCallback(async () => {
-    if (USE_STATIC_LOCATION) {
-      setRegion(STATIC_LOCATION);
-      return STATIC_LOCATION;
-    }
-
     if (!navigator.geolocation) {
       console.warn('Geolocation not supported');
-      return STATIC_LOCATION;
+      return CASABLANCA;
     }
 
     return new Promise<Region>((resolve) => {
@@ -40,7 +33,7 @@ export default function useCurrentLocation() {
         },
         (error) => {
           console.warn('Geolocation error:', error.message);
-          resolve(STATIC_LOCATION);
+          resolve(CASABLANCA);
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
       );
