@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "283771604701",
+    "project_id": "domicilia-dev-preprod",
+    "storage_bucket": "domicilia-dev-preprod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283771604701:android:98be95e2a5eeee9b9c1534",
+        "android_client_info": {
+          "package_name": "com.auraprestige.darmod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283771604701-0m78d5ghb7iefn088o2g7ug506250p9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4oNVudLX_OJPC-6e23DV3FpRi0f_4ezI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283771604701-0m78d5ghb7iefn088o2g7ug506250p9j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "283771604701-1et0003ss0to7psr3gakoaokdpub1rdj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.domicilia.auraprestige"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
