@@ -1,9 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import { trackEvent } from "@/services/analytics";
 
 const SupportWhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleClick = () => {
+    trackEvent("support_whatsapp_tapped", {});
+  };
 
   return (
     <>
@@ -25,6 +30,7 @@ const SupportWhatsAppButton = () => {
         aria-label="Contacter le support via WhatsApp"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClick}
         className="fixed z-[1000] bottom-[104px] right-[20px] flex items-center justify-center w-[52px] h-[52px] bg-[#25D366] text-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:bg-[#22bf5b] hover:scale-[1.08] hover:shadow-[0_8px_32px_rgba(0,0,0,0.15)] active:scale-95 transition-all duration-200 ease-in-out"
       >
         <svg
@@ -42,3 +48,4 @@ const SupportWhatsAppButton = () => {
 };
 
 export default SupportWhatsAppButton;
+

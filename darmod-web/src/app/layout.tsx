@@ -4,6 +4,7 @@ import Providers from "./providers";
 import SupportWhatsAppButton from "@/components/SupportWhatsAppButton";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -49,11 +50,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
-        <SupportWhatsAppButton />
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
+        <Providers>{children}</Providers>
+        <AnalyticsTracker />
+        <SupportWhatsAppButton />
       </body>
     </html>
   );
