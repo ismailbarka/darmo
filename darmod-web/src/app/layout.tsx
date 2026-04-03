@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import Providers from "./providers";
+import SupportWhatsAppButton from "@/components/SupportWhatsAppButton";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const jost = Jost({
@@ -20,7 +22,8 @@ export const metadata: Metadata = {
   openGraph: {
     title:
       "Daro.ma - Femme de ménage à Casablanca | Services de nettoyage près de vous",
-    description: "Découvrez des femmes de ménage, nounous, plombiers et électriciens de confiance près de chez vous à Casablanca. Appelez, envoyez un WhatsApp ou obtenez un itinéraire instantanément.",
+    description:
+      "Découvrez des femmes de ménage, nounous, plombiers et électriciens de confiance près de chez vous à Casablanca. Appelez, envoyez un WhatsApp ou obtenez un itinéraire instantanément.",
     type: "website",
   },
   icons: {
@@ -47,6 +50,10 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>{children}</Providers>
+        <SupportWhatsAppButton />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );
