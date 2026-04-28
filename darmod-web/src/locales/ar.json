@@ -15,5 +15,11 @@
   "view_profile": "عرض الملف الشخصي",
   "fr": "FR",
   "ar": "AR",
-  "logo_text": "دارو"
+  "logo_text": "دارو",
+  "legal_links_label": "معلومات قانونية",
+  "privacy_policy": "سياسة الخصوصية",
+  "terms_of_service": "شروط الاستخدام",
+  "legal_fab_label": "الصفحات القانونية",
+  "report_issue": "الإبلاغ عن مشكلة",
+  "platform_disclaimer": "تربط هذه المنصة المستخدمين بمقدمي خدمات مستقلين. نحن لا نضمن جودة الخدمات."
 }

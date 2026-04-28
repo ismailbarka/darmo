@@ -15,5 +15,11 @@
   "view_profile": "Voir le profil",
   "fr": "FR",
   "ar": "AR",
-  "logo_text": "Daro"
+  "logo_text": "Daro",
+  "legal_links_label": "Infos légales",
+  "privacy_policy": "Politique de confidentialité",
+  "terms_of_service": "Conditions d'utilisation",
+  "legal_fab_label": "Pages légales",
+  "report_issue": "Signaler un problème",
+  "platform_disclaimer": "Cette plateforme met en relation des utilisateurs avec des prestataires indépendants. Nous ne garantissons pas les services."
 }

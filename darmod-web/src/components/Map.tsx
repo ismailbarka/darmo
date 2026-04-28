@@ -7,7 +7,6 @@ import L from 'leaflet';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { Provider } from '@/types';
-import { trackEvent } from '@/services/analytics';
 import { useLanguage } from '@/context/LanguageContext';
 import { getCategoryColor } from '@/utils/categoryColors';
 
@@ -112,31 +111,60 @@ interface MapViewProps {
   onMapMove?: (lat: number, lng: number) => void;
 }
 
-export default function MapView({ center, providers, visibleIds, onSelectProvider, recenterTrigger, recenterZoom, onMapMove }: MapViewProps) {
+export default function MapView({
+  center,
+  providers,
+  visibleIds,
+  onSelectProvider,
+  recenterTrigger,
+  recenterZoom,
+  onMapMove,
+}: MapViewProps) {
   const { language, t } = useLanguage();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const createClusterCustomIcon = (cluster: L.MarkerCluster) => {
     const count = cluster.getChildCount();
-    
+
     return L.divIcon({
       html: `
         <div class="cluster-circle">
           <span class="cluster-count">${count}</span>
         </div>
       `,
-      className: 'custom-marker-cluster',
+      className: "custom-marker-cluster",
       iconSize: L.point(40, 40),
       iconAnchor: [20, 20],
     });
   };
 
+  if (!isMounted || typeof window === "undefined") {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#f5f5f5",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {/* Placeholder while map loads */}
+      </div>
+    );
+  }
+
   return (
     <MapContainer
       key="main-map"
-      id="main-map"
       center={[center.latitude, center.longitude]}
       zoom={14}
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: "100%", height: "100%" }}
       zoomControl={false}
       attributionControl={false}
     >
@@ -166,10 +194,6 @@ export default function MapView({ center, providers, visibleIds, onSelectProvide
             >
               <Popup closeButton={false} className="professional-popup">
                 <div className="popup-card" onClick={() => {
-                  trackEvent('map_popup_tapped', {
-                    provider_id: provider.id,
-                    provider_name: language === 'ar' ? `${provider.firstnameAr} ${provider.lastnameAr}` : `${provider.firstnameFr} ${provider.lastnameFr}`,
-                  });
                   onSelectProvider(provider);
                 }}>
                   <div className="popup-image" style={{ backgroundImage: `url(${provider.photo || '/profile.png'})` }}></div>

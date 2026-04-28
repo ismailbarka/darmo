@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { trackEvent } from '@/services/analytics';
 
 const LanguageSwitcher: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -17,7 +16,6 @@ const LanguageSwitcher: React.FC = () => {
   const handleLanguageChange = (newLang: 'fr' | 'ar') => {
     if (newLang !== language) {
       setLanguage(newLang);
-      trackEvent('language_changed', { language: newLang });
     }
   };
 

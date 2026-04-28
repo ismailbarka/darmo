@@ -5,7 +5,6 @@ import { Provider } from "@/types";
 import { getCategoryColor } from "@/utils/categoryColors";
 import { formatDistance } from "@/utils/formatDistance";
 import { messageHandler } from "@/utils/messageHandler";
-import { trackEvent } from "@/services/analytics";
 import { useLanguage } from "@/context/LanguageContext";
 import ActionButtons from "./ActionButtons";
 
@@ -34,13 +33,7 @@ export default function ProviderPanel({
   const categoryColor = getCategoryColor(provider.categoryId);
 
   React.useEffect(() => {
-    trackEvent("provider_card_viewed", {
-      provider_id: provider.id,
-      provider_name: fullName,
-      category: categoryName,
-      distance_meters: Math.round(provider.distance || 0),
-      source,
-    });
+    
   }, [provider.id, fullName, categoryName, provider.distance, source]);
 
   return (
@@ -51,11 +44,6 @@ export default function ProviderPanel({
           <button
             className="panel-share-btn"
             onClick={() => {
-              trackEvent("provider_shared", {
-                provider_id: provider.id,
-                provider_name: fullName,
-                category: categoryName,
-              });
               const msg = messageHandler(
                 fullName,
                 categoryName,
@@ -107,12 +95,14 @@ export default function ProviderPanel({
         <div className="panel-body">
           <div className="profile-photo" style={{ borderColor: categoryColor }}>
             {provider.photo ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={provider.photo}
                 alt={fullName}
                 className="profile-img"
               />
             ) : (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src="/profile.png"
                 alt={fullName}

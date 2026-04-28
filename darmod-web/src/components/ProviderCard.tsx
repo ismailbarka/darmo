@@ -5,7 +5,6 @@ import { Provider } from '@/types';
 import { getCategoryColor } from '@/utils/categoryColors';
 import { formatDistance } from '@/utils/formatDistance';
 import { messageHandler } from '@/utils/messageHandler';
-import { trackEvent } from '@/services/analytics';
 import { useLanguage } from '@/context/LanguageContext';
 import ActionButtons from './ActionButtons';
 
@@ -21,11 +20,6 @@ export default function ProviderCard({ provider, onSelect }: ProviderCardProps) 
   const categoryColor = getCategoryColor(provider.categoryId);
 
   const handleShare = () => {
-    trackEvent('provider_shared', {
-      provider_id: provider.id,
-      provider_name: fullName,
-      category: categoryName,
-    });
     const msg = messageHandler(fullName, categoryName, provider.phone);
     if (navigator.share) {
       navigator.share({ title: fullName, text: msg }).catch(() => {});
@@ -39,8 +33,10 @@ export default function ProviderCard({ provider, onSelect }: ProviderCardProps) 
       <div className="provider-card-main">
         <div className="provider-card-image">
           {provider.photo ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img src={provider.photo} alt={fullName} />
           ) : (
+            // eslint-disable-next-line @next/next/no-img-element
             <img src="/profile.png" alt={fullName} className="image-placeholder" />
           )}
         </div>

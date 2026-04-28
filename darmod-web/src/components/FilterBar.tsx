@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { trackEvent } from '@/services/analytics';
 
 export interface CategoryOption {
   id: number | 'All';
@@ -17,11 +16,7 @@ interface FilterBarProps {
 
 export default function FilterBar({ categories, selectedId, onSelect, providersCount }: FilterBarProps) {
   const handleClick = (category: CategoryOption) => {
-    trackEvent('filter_selected', {
-      category_id: category.id,
-      category_name: category.name,
-      providers_visible_count: providersCount,
-    });
+
     onSelect(category.id);
   };
 
